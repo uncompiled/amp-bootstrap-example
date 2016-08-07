@@ -1,0 +1,21 @@
+{
+  "name": "amp-bootstrap",
+  "version": "1.0.0",
+  "description": "Example workflow for using Bootstrap with AMP",
+  "keywords": [
+    "amp",
+    "amphtml",
+    "bootstrap",
+    "css"
+  ],
+  "author": "Chris Nguyen",
+  "license": "MIT",
+  "devDependencies": {
+    "amphtml-validator": "^1.0.10",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-html-replace": "^1.6.1",
+    "gulp-purifycss": "^0.2.0",
+    "purifycss": "^1.1.9"
+  }
+}
