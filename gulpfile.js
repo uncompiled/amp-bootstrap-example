@@ -6,6 +6,7 @@ var amphtmlValidator = require('amphtml-validator');
 var fs = require('fs');
 
 const BUILD_PATH = './build';
+const BUILD_HTML = BUILD_PATH + '/index.html';
 const SOURCE = {
   'BOOTSTRAP_CSS': './html/css/bootstrap.min.css',
   'AMPHTML': './amphtml/index.html',
@@ -20,7 +21,7 @@ gulp.task('purify', function() {
 });
 
 // inline-css inserts the cleaned + minified CSS into HTML
-gulp.task('inline-css', function() {
+gulp.task('inline-css', ['purify'], function() {
   return gulp.src(SOURCE.AMPHTML)
     .pipe(htmlreplace({
       'cssInline': {
@@ -34,9 +35,9 @@ gulp.task('inline-css', function() {
 // validate ensures the AMP HTML is valid
 gulp.task('validate', function() {
   amphtmlValidator.getInstance().then(function (validator) {
-    var input = fs.readFileSync(BUILD_PATH + '/index.html', 'utf8');
+    var input = fs.readFileSync(BUILD_HTML, 'utf8');
     var result = validator.validateString(input);
-    ((result.status === 'PASS') ? console.log : console.error)(result.status);
+    ((result.status === 'PASS') ? console.log : console.error)(BUILD_HTML + ": " + result.status);
     for (var ii = 0; ii < result.errors.length; ii++) {
       var error = result.errors[ii];
       var msg = 'line ' + error.line + ', col ' + error.col + ': ' + error.message;
@@ -48,4 +49,7 @@ gulp.task('validate', function() {
   });
 });
 
-gulp.task('default', ['purify']);
+// Build task cleans the CSS and inlines it
+gulp.task('build', ['inline-css']);
+// Default task will only validate the build output
+gulp.task('default', ['validate']);
