@@ -11,10 +11,10 @@
   "author": "Chris Nguyen",
   "license": "MIT",
   "devDependencies": {
-    "amphtml-validator": "^1.0.10",
+    "amphtml-validator": "^1.0.18",
     "gulp": "^3.9.1",
-    "gulp-clean-css": "^2.0.12",
-    "gulp-html-replace": "^1.6.1",
+    "gulp-clean-css": "^2.2.2",
+    "gulp-html-replace": "^1.6.2",
     "gulp-purifycss": "^0.2.0",
     "purifycss": "^1.1.9"
   }
