@@ -1,4 +1,4 @@
-# amp-bootstrap
+# AMP + Bootstrap Example
 
 This is an example of building [AMP HTML](https://www.ampproject.org/) pages
 from [Bootstrap](http://getbootstrap.com/)-based websites.
